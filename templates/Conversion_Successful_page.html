@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset = "UTF-8">
+        <title> Conversion Success</title>
+        <style>
+            body {
+             display: flex; 
+            justify-content: center;
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            font-family: Arial, sans-serif;
+            }
+        </style>
+    </head>
+    <body> 
+        <h1> {{message}}</h1>
+        {% if flac_path %}
+        <p> FLAC file saved at {{ flac_path }} </p>
+        {% endif %}
+        <script>
+
+            
+        </script>
+    </body>
+</html>
