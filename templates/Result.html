@@ -36,8 +36,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hello</h1>
-        <p>Darkness my old friend</p>
+        <h1>Hello My Man</h1>
+        <p id ="resultMessage"></p>
         <p>
             <button type="button" onclick="backToHomePage()">Back</button>
         </p>
@@ -46,6 +46,15 @@
         function backToHomePage() {
             window.location.href = "/";
         }
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            if(message) {
+            document.getElementById('resultMessage').innerText = message;
+            } else {
+                document.getElementById('resultMessage').innerText = "No message provided";
+            }
+        });
     </script>
 </body>
 </html>

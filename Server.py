@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, redirect, url_for, render_template
 from moviepy.editor import *
 import os
 
@@ -22,8 +22,8 @@ def convert():
     mp4_path = mp4_path.replace('"', '').replace("'", "") #replaces any quotes 
     
     title = extract_title_from_path(mp4_path)
-  #  flac_path = f"C:\\Users\\bryan\\OneDrive\\Desktop\\New folder (2)\\{title}.flac"
-    flac_path = f"C:\\Users\\fungb\\OneDrive\\Desktop\\Converted Songs\\{title}.flac"
+    flac_path = f"C:\\Users\\bryan\\OneDrive\\Desktop\\New folder (2)\\{title}.flac"
+ #   flac_path = f"C:\\Users\\fungb\\OneDrive\\Desktop\\Converted Songs\\{title}.flac"
     
     try:
         convert_video_to_flac(mp4_path, flac_path)
@@ -32,7 +32,8 @@ def convert():
         message = f"Conversion failed: {str(e)}"
 
     print("Rendering template with message:", message)
-    return render_template('Result.html')
+    return redirect(url_for('result', message = message))
+   # return render_template('Result.html' ,message =message)
     #return f"Conversion complete! FLAC file saved at {flac_path}"
 
 def extract_title_from_path(path):
@@ -40,5 +41,9 @@ def extract_title_from_path(path):
     title, _ = os.path.splitext(base_name)
     return title
 
+@Server.route('/result')   
+def result():
+    return render_template('Result.html')
+    
 if __name__ == '__main__':
     Server.run(debug=True)
