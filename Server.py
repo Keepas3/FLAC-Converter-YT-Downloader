@@ -8,9 +8,22 @@ def convert_video_to_flac(video_path, flac_path):
     try:
         video = VideoFileClip(video_path)
         audio = video.audio
-    except KeyError:
-        audio = AudioFileClip(video_path)
-    audio.write_audiofile(flac_path, codec='flac')
+    except Exception as e: 
+        print(f"Error processing video file: {e}") 
+        try: 
+            audio = AudioFileClip(video_path) 
+        except Exception as e: 
+            print(f"Error processing audio file: {e}") 
+            raise e 
+        
+    try: 
+        audio.write_audiofile(flac_path, codec='flac') 
+        print(f"Conversion complete! FLAC file saved at {flac_path}") 
+
+    except Exception as e: 
+        print(f"Error writing audio file: {e}") 
+        raise e
+
 
 @Server.route('/')
 def home(): # Tells the server to render the home page or the Converter.html when they type in the URL
@@ -22,8 +35,8 @@ def convert():
     mp4_path = mp4_path.replace('"', '').replace("'", "") #replaces any quotes 
     
     title = extract_title_from_path(mp4_path)
-    flac_path = f"C:\\Users\\bryan\\OneDrive\\Desktop\\New folder (2)\\{title}.flac"
- #   flac_path = f"C:\\Users\\fungb\\OneDrive\\Desktop\\Converted Songs\\{title}.flac"
+  #  flac_path = f"C:\\Users\\bryan\\OneDrive\\Desktop\\New folder (2)\\{title}.flac"
+    flac_path = f"C:\\Users\\fungb\\OneDrive\\Desktop\\Converted Songs\\{title}.flac"
     
     try:
         convert_video_to_flac(mp4_path, flac_path)
@@ -43,7 +56,8 @@ def extract_title_from_path(path):
 
 @Server.route('/result')   
 def result():
-    return render_template('Result.html')
+    message = request.args.get('message')
+    return render_template('Result.html', message=message)
     
 if __name__ == '__main__':
     Server.run(debug=True)
