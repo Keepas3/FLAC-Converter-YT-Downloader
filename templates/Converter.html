@@ -44,32 +44,30 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>
-            <!-- <img src="MusicConverterLogo.jpg" alt="Music Converter.com" width="80" height="80"> -->
-        </h1>
-        <p>
-            Enter MP4 Path to Convert: <input type="text" id="userInput" name ="mp4_path" required>
-        </p>
-        <p>
-            <button type="button" onclick="showPopUp()">Submit!</button>
-        </p>
+    <div class="container"> 
+        <h1>MP4 Converter</h1> 
+        <form action="/convert" method="post" enctype="multipart/form-data"> 
+            <label for="mp4_file">Choose a video file:</label> 
+            <br>
+            <input type="file" id="mp4_file" name="mp4_file" accept=".mp4" required> 
+            <button type="submit">Convert</button> 
+        </form> 
     </div>
     <script> //Javascript
-        function showPopUp() {
-            var form = document.createElement('form'); //creates the form
-            var userInput = document.getElementById('userInput').value; //takes what the user entered in and saves it to userInput
-            userInput = userInput.replace(/['"]/g, ''); //gets rid of any quotes
-            form.method = 'POST'; //data will be sent to the server through HTML request
-            form.action = '/convert'; //Sets the form's action to '/convert', specifying the URL to which the form data will be sent when the form is submitted.
-            var input = document.createElement('input'); 
-            input.type = 'hidden'; // wont be seen by user
-            input.name = 'mp4_path'; //specifies the name
-            input.value = userInput; 
-            form.appendChild(input); //appends all the elements of name,type,value to the form
-            document.body.appendChild(form); // appends the form to the rest of the document
-            form.submit();
-        }
+        // function showPopUp() {
+        //     var form = document.createElement('form'); //creates the form
+        //     var userInput = document.getElementById('userInput').value; //takes what the user entered in and saves it to userInput
+        //     userInput = userInput.replace(/['"]/g, ''); //gets rid of any quotes
+        //     form.method = 'POST'; //data will be sent to the server through HTML request
+        //     form.action = '/convert'; //Sets the form's action to '/convert', specifying the URL to which the form data will be sent when the form is submitted.
+        //     var input = document.createElement('input'); 
+        //     input.type = 'hidden'; // wont be seen by user
+        //     input.name = 'mp4_path'; //specifies the name
+        //     input.value = userInput; 
+        //     form.appendChild(input); //appends all the elements of name,type,value to the form
+        //     document.body.appendChild(form); // appends the form to the rest of the document
+        //     form.submit();
+        // }
     </script>
 </body>
 </html>
