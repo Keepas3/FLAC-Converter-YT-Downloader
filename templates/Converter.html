@@ -48,8 +48,14 @@
         <h1>MP4 Converter</h1> 
         <form action="/convert" method="post" enctype="multipart/form-data"> 
             <label for="mp4_file">Choose a video file:</label> 
+            <input type="file" id="mp4_file" name="mp4_file" accept=".mp4" > 
             <br>
-            <input type="file" id="mp4_file" name="mp4_file" accept=".mp4" required> 
+            <br>
+            <label for="youtube_url">or enter a YouTube URL:</label>
+            <br>
+            <input type="text" id="youtube_url" name="youtube_url" placeholder="https://www.youtube.com/watch?v=example" style="width:400px;">
+            <br>
+            <br>
             <button type="submit">Convert</button> 
         </form> 
     </div>
