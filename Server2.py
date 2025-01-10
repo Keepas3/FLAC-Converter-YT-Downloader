@@ -4,8 +4,8 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 
 Server2 = Flask(__name__)
 
-UPLOAD_FOLDER = 'C:\\Users\\fungb\\OneDrive\\Desktop\\MP4 Songs'
-OUTPUT_FOLDER = 'C:\\Users\\fungb\\OneDrive\\Desktop\\Converted Songs'
+UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER')
+OUTPUT_FOLDER = os.getenv('OUTPUT_FOLDER')
 
 def convert_video_to_flac(video_path, flac_path):
     try:

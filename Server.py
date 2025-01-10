@@ -1,8 +1,8 @@
 import os
 from flask import Flask, request, redirect, url_for, render_template
 from moviepy.editor import VideoFileClip, AudioFileClip
-import pytube
-from pytube import YouTube
+import pytubefix
+from pytubefix import YouTube
 
 Server = Flask(__name__)
 
@@ -12,13 +12,13 @@ Server.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def download_youtube_video(url, output_path):
     try:
-        yt = pytube.YouTube(url)
-        stream = yt.streams.filter(progressive=True, file_extension='mp4').first()
+        yt = YouTube(url)
+        stream = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
         if stream:
             stream.download(output_path)
         else:
             raise Exception("No MP4 stream available")
-    except pytube.exceptions.VideoUnavailable:
+    except pytubefix.exceptions.VideoUnavailable:
         raise Exception("Video unavailable")
     except Exception as e:
         raise Exception(f"An error occurred: {e}")
@@ -45,10 +45,13 @@ def convert():
 
     # Handle YouTube URL
     youtube_url = request.form.get('youtube_url')
+    print(youtube_url + "WHAWHSHWJHWJHDR")
     if youtube_url:
         mp4_path = os.path.join(UPLOAD_FOLDER, 'downloaded_video.mp4')
         try:
             download_youtube_video(youtube_url, UPLOAD_FOLDER)
+            message = f"Conversion Complete! Youtube Video saved at {mp4_path}"
+            return redirect(url_for('result', message=message))
         except Exception as e:
             return f"Failed to download video: {str(e)}"
 
