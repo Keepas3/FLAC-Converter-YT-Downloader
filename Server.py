@@ -6,8 +6,24 @@ from pytubefix import YouTube
 
 Server = Flask(__name__)
 
-UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER')
-OUTPUT_FOLDER = os.getenv('OUTPUT_FOLDER')
+def create_flac_output_folder(): 
+    user_home = os.path.expanduser('~') 
+    output_path = os.path.join(user_home, 'Converted Flac Files') 
+    if not os.path.exists(output_path): 
+        os.makedirs(output_path) 
+    print(output_path)
+    return output_path
+
+def create_yt_output_folder():
+    user_home = os.path.expanduser('~')
+    output_path = os.path.join(user_home, 'Downloaded Youtube Videos')
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+    return output_path
+
+
+
+UPLOAD_FOLDER = create_yt_output_folder()
 Server.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def download_youtube_video(url, output_path):
@@ -45,9 +61,11 @@ def convert():
 
     # Handle YouTube URL
     youtube_url = request.form.get('youtube_url')
-    print(youtube_url + "WHAWHSHWJHWJHDR")
+   # print(youtube_url)
     if youtube_url:
-        mp4_path = os.path.join(UPLOAD_FOLDER, 'downloaded_video.mp4')
+        yt = YouTube(youtube_url)
+        video_title =yt.title
+        mp4_path = os.path.join(UPLOAD_FOLDER, f'{video_title}.mp4')
         try:
             download_youtube_video(youtube_url, UPLOAD_FOLDER)
             message = f"Conversion Complete! Youtube Video saved at {mp4_path}"
@@ -64,8 +82,9 @@ def convert():
     if not mp4_path:
         return "No video provided"
 
+    output_folder = create_flac_output_folder()
     title = extract_title_from_path(mp4_path)
-    flac_path = os.path.join(OUTPUT_FOLDER, f"{title}.flac")
+    flac_path = os.path.join(output_folder, f"{title}.flac")
 
     try:
         convert_video_to_flac(mp4_path, flac_path)

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark light">
-    <title>Conversion Result</title>
+    <title>Result Page</title>
     <style>
         body {
             display: flex;
@@ -17,9 +17,9 @@
         .container {
             text-align: center;
             padding: 1rem;
-            border: 1px solid #000000;
+
             border-radius: 10px;
-            background-color: #050505;
+            
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .container button[type="button"] {
@@ -40,19 +40,31 @@
             border: 1px solid #9c9999;
             border-radius: 5px;
             padding: 1rem;
-            background-color: #100a0a;
+          
             margin: 1rem 0;
+        }
+        .google-drive-link img {
+            width: 50px; /* Adjust size as needed */ 
+            height: 50px;
+             cursor:pointer
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Conversion Results:</h1>
+        <hr>
         <div class="result-message" id="resultMessage"></div>
         <p>
-            <button type="button" onclick="backToHomePage()">Back</button>
+            <button type="button" onclick="backToHomePage()">Back to Home Page</button>
         </p>
-    </div>
+    <br><br>
+    <p class="google-drive-link">
+        <a href = "https://drive.google.com/" target ="_blank"> 
+            <img src="Images\Google Drive.png" alt ="Google Drive">
+         </a>
+    </p>
+</div>
     <script>
         function backToHomePage() {
             window.location.href = "/";
