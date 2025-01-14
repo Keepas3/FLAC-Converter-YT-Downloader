@@ -105,4 +105,6 @@ def result():
     return render_template('Result.html', message=message)
 
 if __name__ == '__main__':
-    Server.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use Render's PORT or default to 5000 locally
+    Server.run(debug=True, host='0.0.0.0', port=port)  # Bind to 0.0.0.0 for external access
+
