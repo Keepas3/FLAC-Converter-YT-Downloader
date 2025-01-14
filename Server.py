@@ -53,7 +53,7 @@ def convert_video_to_flac(video_path, flac_path):
 
 @Server.route('/')
 def home():
-    return render_template('Converter.html')
+    return render_template('index.html')
 
 @Server.route('/convert', methods=['POST'])
 def convert():
