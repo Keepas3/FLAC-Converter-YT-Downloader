@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, redirect, url_for, render_template
-from moviepy.editor import VideoFileClip, AudioFileClip
+from moviepy import VideoFileClip, AudioFileClip
 import pytubefix
 from pytubefix import YouTube
 

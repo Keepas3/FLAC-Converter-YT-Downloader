@@ -1,5 +1,5 @@
-from moviepy.editor import *
-from pytube import YouTube
+from moviepy import *
+from pytubefix import YouTube
 import os
 import requests
 from colorama import init as colorama_init
