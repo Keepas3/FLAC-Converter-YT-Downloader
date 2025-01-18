@@ -1,16 +1,13 @@
-# Music-Converter
-
+# FLAC Converter and YT Downloader
 
 ## Overview
-VCRTS is a distributed cloud computing system that leverages parked vehicles' computational resources to create a static cloud computing environment. The system enables vehicle owners to monetize their parked vehicles' computing power while providing clients with computational resources for their jobs.
+The Flac Converter and YT Downloader is a local website that uses a python backend to download youtube videos through URL as well as converting MP4 files to Flac files. 
 
 ## Key Components
 
-### Client Side (TheClientGUI)
-* User registration and authentication
-* Job submission interface
-* Real-time job status monitoring
-* Resource usage tracking
+### index.html (Website)
+* Interface for file/URL submission
+
 
 ### Server Side (TheServerGUI)
 * Cloud controller administration
@@ -37,16 +34,10 @@ VCRTS is a distributed cloud computing system that leverages parked vehicles' co
 * Priority-based job management
 
 ## Technical Stack
-* Backend: Java
-* Frontend: Java Swing
+* Backend: Python
+* Frontend: HTML
 * Database: MySQL
-* Authentication: Custom implementation with database integration
 
-## Database Schema
-* Users (Vehicle Owners, Job Submitters, Cloud Controllers)
-* Vehicles (Resources)
-* Jobs
-* Vehicle Assignments
 
 ## Getting Started
 
