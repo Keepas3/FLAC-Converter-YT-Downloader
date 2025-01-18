@@ -1,96 +1,62 @@
-# FLAC Converter and YT Downloader
+# Flac Converter and YT Downloader
 
 ## Overview
 The Flac Converter and YT Downloader is a local website that uses a python backend to download youtube videos through URL as well as converting MP4 files to Flac files. 
 
 ## Key Components
 
-### index.html (Website)
+### Website (index.html & result.html)
 * Interface for file/URL submission
+* Saves files to a folder named "Converted Flac Files" and "Downloaded Youtube Videos" respectively
 
+### Backend Side (Server.py)
+* Creates output folders on user's desktop
+* Downloads YT Videos and converts files
+* Handles routing through the html pages
 
-### Server Side (TheServerGUI)
-* Cloud controller administration
-* Resource allocation management
-* Job scheduling and monitoring
-* System status dashboard
-
-## Core Features
-
-### User Management
-* Vehicle Owner registration/login
-* Job Submitter (Client) registration/login
-* Cloud Controller administration
-
-### Vehicle Resource Management
-* Vehicle registration with specs (VIN, computational power, storage)
-* Residency time tracking
-* Resource availability monitoring
-
-### Job Processing
-* FIFO job scheduling
-* Automated completion time calculation
-* Job status tracking
-* Priority-based job management
 
 ## Technical Stack
 * Backend: Python
-* Frontend: HTML
-* Database: MySQL
+* Frontend: HTML/CSS
+* Imports: flask, moviepy, pytubefix, os
 
 
 ## Getting Started
 
 ### Prerequisites
-* Java JDK 11+
-* MySQL 8.0+
-* Environment variables configured:
-  ```
-  url: Database URL
-  sqlusername: Database username
-  password: Database password
-  ```
+* Python JDK 11+
 
 ### Installation
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/VCRTS.git
+   git clone https://github.com/Keepas3/FLAC-Converter-YT-Downloader.git
    ```
-2. Import SQL schema
+2. Create virtual environment to isolate dependencies (Optional)
    ```bash
-   mysql -u root -p < VCRTS-TablesV1.sql
+   python -m venv myproject_env
    ```
-3. Compile Java files
+3. Download all dependencies
    ```bash
-   javac *.java
+   pip -r requirements.txt
+   ```
+4. Compile Python file
+   ```bash
+   python Server.py
    ```
 
-### Running the Application
-1. Start the server
-   ```bash
-   java TheServerGUI
-   ```
-2. Start the client
-   ```bash
-   java TheClientGUI
-   ```
 
 ## Project Structure
-VCRTS/
-├── *.java               # Source files
-├── *.class              # Compiled classes
-├── jobs/                # Job submission records
-├── resources/           # Resource configuration
+Flac Converter YT Downloader/
+├── images/              # Images used on website
+├── templates/           # Contains the html files
 
 
 ## Classes Overview
-* `User`: Base class for system users
-* `VehicleOwner`: Manages vehicle registration and ownership
-* `JobSubmitter`: Handles job submission and tracking
-* `Vehicle`: Represents computational resources
-* `CloudController`: Manages resource allocation
-* `Authentication`: Handles user authentication
-* `TheClientGUI/TheServerGUI`: User interfaces
+* `Server.py`: Handles all the downloading/converting and routing
+* `index.html`: Home page of the site 
+* `result.html`: Resulting page after clicking on submit
+* `requirements.txt`: All the dependencies needed for the project
+
 
 ## Contributing
 1. Fork the repository
@@ -100,8 +66,5 @@ VCRTS/
 5. Submit Pull Request
 
 ## Authors
-* Bryan Fung
-* Tomas Santos Yciano
-* Albert Legacki
-* Allan Ilyasov
-* Mathew Martinez
+* Keepas3
+
