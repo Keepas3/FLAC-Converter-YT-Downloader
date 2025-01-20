@@ -22,13 +22,13 @@ def create_yt_output_folder():
     return output_path
 
 
-
+#youtube_url = "https://www.youtube.com/watch?v=7TpscN7uMBQ"
 UPLOAD_FOLDER = create_yt_output_folder()
 Server.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def download_youtube_video(url, output_path):
     try:
-        yt = YouTube(url)
+        yt = YouTube(url, use_po_token=True)
         stream = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
         if stream:
             stream.download(output_path)
@@ -105,6 +105,8 @@ def result():
     return render_template('Result.html', message=message)
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Use Render's PORT or default to 5000 locally
-    Server.run(debug=True, host='0.0.0.0', port=port)  # Bind to 0.0.0.0 for external access
+    #download_youtube_video(youtube_url, UPLOAD_FOLDER)
+    Server.run(debug=True)
+    # port = int(os.environ.get("PORT", 5000))  # Use Render's PORT or default to 5000 locally
+    # Server.run(debug=True, host='0.0.0.0', port=port)  # Bind to 0.0.0.0 for external access
 
