@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark light">
     <title>FLAC Converter & YT Video Downloader</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/Legend.png') }}">
+
     <style>
         body {
             display: flex; 
@@ -49,7 +51,14 @@
 <body>
     <div class="container"> 
         <h1>Download / Convert: </h1> 
+        <hr>
         <form action="/convert" method="post" enctype="multipart/form-data"> 
+ <!--
+            <a href = "https://en.wikipedia.org/wiki/Shrek">
+                <img src="{{ url_for('static', filename='images/MasterLeague.png') }}" height =200 width =200 alt="This is a legend picture" title = "league">
+             </a>
+            -->
+            <br>
             <label for="mp4_file">Choose a video file: </label> 
             <br>
             <input type="file" id="mp4_file" name="mp4_file" accept=".mp4" > 

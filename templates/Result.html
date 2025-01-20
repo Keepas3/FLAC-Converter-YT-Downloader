@@ -46,7 +46,8 @@
         .google-drive-link img {
             width: 50px; /* Adjust size as needed */ 
             height: 50px;
-             cursor:pointer
+            cursor:pointer
+          
         }
     </style>
 </head>
@@ -61,7 +62,7 @@
     <br><br>
     <p class="google-drive-link">
         <a href = "https://drive.google.com/" target ="_blank"> 
-            <img src="Images\Google Drive.png" alt ="Google Drive">
+            <img src="{{ url_for('static', filename='images/GDrive.png')}}" alt ="Google Drive">
          </a>
     </p>
 </div>
