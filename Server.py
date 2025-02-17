@@ -63,7 +63,7 @@ def convert():
     youtube_url = request.form.get('youtube_url')
    # print(youtube_url)
     if youtube_url:
-        yt = YouTube(youtube_url)
+        yt = YouTube(youtube_url,use_po_token=True)
         video_title =yt.title
         mp4_path = os.path.join(UPLOAD_FOLDER, f'{video_title}.mp4')
         try:
