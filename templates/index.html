@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <title>FLAC Converter & YT Video Downloader</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/Legend.png') }}">
+
+    <style>
+        body {
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .container input[type="text"] {
+            width: 80%; 
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 1px solid #ccc; 
+            font-size: 16px; 
+            margin-top: 20px;
+            background: #8646b0;
+        }
+        .container button[type="submit"] {
+            padding: 12px 20px; 
+            border-radius: 10px; 
+            border: none; 
+            background-color: #4285f4; 
+            color: white; 
+            font-size: 16px; 
+            cursor: pointer; 
+            margin-top: 20px; 
+            transition: background-color 0.3s;
+            transition-duration: 0.4s;
+        }
+        .container button[type="submit"]:hover {
+            background-color: #8b8be3; 
+        }
+        .container input[type="file"] {
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <h1>Download / Convert: </h1> 
+        <hr>
+        <form action="/convert" method="post" enctype="multipart/form-data"> 
+ <!--
+            <a href = "https://en.wikipedia.org/wiki/Shrek">
+                <img src="{{ url_for('static', filename='images/MasterLeague.png') }}" height =200 width =200 alt="This is a legend picture" title = "league">
+             </a>
+            -->
+            <br>
+            <label for="mp4_file">Choose a video file: </label> 
+            <br>
+            <input type="file" id="mp4_file" name="mp4_file" accept=".mp4" > 
+            <br>
+            <br>
+            <label for="youtube_url">or enter a YouTube URL:</label>
+            <br>
+            <input type="text" id="youtube_url" name="youtube_url" placeholder="https://www.youtube.com/watch?v=example" style="width:400px;">
+            <br>
+            <br>
+            <button type="submit">Submit</button> 
+        </form> 
+    </div>
+    <script> //Javascript
+        // function showPopUp() {
+        //     var form = document.createElement('form'); //creates the form
+        //     var userInput = document.getElementById('userInput').value; //takes what the user entered in and saves it to userInput
+        //     userInput = userInput.replace(/['"]/g, ''); //gets rid of any quotes
+        //     form.method = 'POST'; //data will be sent to the server through HTML request
+        //     form.action = '/convert'; //Sets the form's action to '/convert', specifying the URL to which the form data will be sent when the form is submitted.
+        //     var input = document.createElement('input'); 
+        //     input.type = 'hidden'; // wont be seen by user
+        //     input.name = 'mp4_path'; //specifies the name
+        //     input.value = userInput; 
+        //     form.appendChild(input); //appends all the elements of name,type,value to the form
+        //     document.body.appendChild(form); // appends the form to the rest of the document
+        //     form.submit();
+        // }
+    </script>
+</body>
+</html>
